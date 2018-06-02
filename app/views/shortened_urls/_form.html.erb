@@ -11,7 +11,11 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= form.text_field :url, placeholder: 'Enter url', class: 'form-control', required: true %>
+  </div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= button_tag 'Submit', type: 'submit', class: 'btn btn-primary pull-right'  %>
   </div>
 <% end %>

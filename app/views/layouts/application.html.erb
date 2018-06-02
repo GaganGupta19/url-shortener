@@ -9,6 +9,31 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">URL Shortener</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= 'active' if params[:action].eql?('index') %>">
+            <a class="nav-link" href="<%= shortened_urls_path %>">All urls <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item <%= 'active' if params[:action].eql?('new') %>">
+            <a class="nav-link" href="<%= new_shortened_url_path %>">Create New</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="container mt-50">
+        <% flash.each do |key, value| %>
+            <div class="<%= flash_class(key) %>">
+              <%= value %>
+            </div>
+        <% end %>
+      </div>
+      <div class="container mt-50">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
