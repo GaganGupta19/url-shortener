@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :shortened_urls, only: [:index, :new, :create]
+  resources :shortened_urls, only: [:index, :new, :create] do
+    collection do
+      post 'upload_from_csv'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do

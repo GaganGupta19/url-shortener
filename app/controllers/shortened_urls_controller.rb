@@ -15,12 +15,26 @@ class ShortenedUrlsController < ApplicationController
     respond_to do |format|
       if @shortened_url.present?
         format.html { redirect_to shortened_urls_path, notice: 'Shortened url was successfully created.' }
-        format.json { render :show, status: :created, location: @shortened_url }
       else
         format.html { render :new }
         format.json { render json: @shortened_url.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def upload_from_csv
+    binding.pry
+    if params[:csv]
+      CSV.read(params[:csv])
+    end
+    # respond_to do |format|
+    #   if @shortenf ed_url.present?
+    #     format.html { redirect_to shortened_urls_path, notice: 'Shortened urls were successfully created.' }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @shortened_url.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   private

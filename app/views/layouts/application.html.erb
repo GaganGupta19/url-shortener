@@ -20,6 +20,9 @@
           <li class="nav-item <%= 'active' if params[:action].eql?('new') %>">
             <a class="nav-link" href="<%= new_shortened_url_path %>">Create New</a>
           </li>
+          <li class="nav-item <%= 'active' if params[:action].eql?('upload_from_csv') %>">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#upload-csv-modal">Upload From CSV</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -35,5 +38,6 @@
         <%= yield %>
       </div>
     </div>
+    <%= render partial: 'shortened_urls/upload_from_csv' %>
   </body>
 </html>
