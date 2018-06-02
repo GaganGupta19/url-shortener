@@ -7,11 +7,11 @@
 
 >> Search
 
-`GET    /api/v1/features/url_shorteners/search/:unique_key`
+`GET    /api/v1/features/url_shorteners/:unique_key`
 
 >>Listing
 
-`GET    /api/v1/features/url_shorteners `
+`GET    /api/v1/features/url_shorteners`
 
 >>Create
 

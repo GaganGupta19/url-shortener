@@ -10,11 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       #:new, :edit, :update
       namespace :features do
-        resources :url_shorteners, only: [:create, :destroy, :index], param: :unique_key do
-          collection do
-            get 'search/:unique_key', action: :search
-          end
-        end
+        resources :url_shorteners, only: [:create, :destroy, :index, :show], param: :unique_key
       end
     end
   end

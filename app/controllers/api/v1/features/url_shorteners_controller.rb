@@ -11,7 +11,7 @@ class Api::V1::Features::UrlShortenersController < Api::V1::BaseController
   end
 
   # for searching the origin url
-  def search
+  def show
     result = ShortenedUrl.find_by(unique_key: params[:unique_key])
     if result
       json_response(result.create_json_object(request.host), :ok)
