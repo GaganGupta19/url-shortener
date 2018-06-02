@@ -18,5 +18,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'shortened_urls#index'
+  root 'shortened_urls#new'
 end

@@ -23,10 +23,11 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def upload_from_csv
-    binding.pry
-    if params[:csv]
-      CSV.read(params[:csv])
+    CSV.foreach(params[:csv].tempfile, headers: true) do |row|
+      sanitized_url = UrlShortener.sanitize_url(row.to_h["url"])
+      ShortenedUrl.find_or_create_by(url: sanitized_url)
     end
+    redirect_to shortened_urls_path, notice: 'Shortened urls were successfully created.'
     # respond_to do |format|
     #   if @shortenf ed_url.present?
     #     format.html { redirect_to shortened_urls_path, notice: 'Shortened urls were successfully created.' }
