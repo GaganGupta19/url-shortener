@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :shortened_urls, only: [:index, :new, :create] do
     collection do
       post 'upload_from_csv'
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/:unique_key' => 'shortened_urls#redirect_handler'
   root 'shortened_urls#new'
 end

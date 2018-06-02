@@ -38,6 +38,12 @@ class ShortenedUrlsController < ApplicationController
     # end
   end
 
+  def redirect_handler
+    record = ShortenedUrl.find_by_unique_key(params[:unique_key])
+    redirect_url = (record && record.url ? record.url : root_path)
+    redirect_to redirect_url
+  end
+
   private
     def shortened_url_params
       params.fetch(:shortened_url, {})
