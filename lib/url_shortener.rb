@@ -30,4 +30,5 @@ module UrlShortener
   def self.create_url(host, uniq_key)
     "#{host}/#{uniq_key}"
   end
+
 end

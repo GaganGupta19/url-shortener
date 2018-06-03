@@ -1,5 +1,7 @@
 class ShortenedUrl < ApplicationRecord
   before_create :generate_token
+  validates_presence_of [:url, :unique_key]
+  validates_uniqueness_of :unique_key
 
   def generate_token
     custom_key = nil
